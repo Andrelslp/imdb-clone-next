@@ -3,6 +3,7 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import Loading from '@/app/loading';
 
 interface NavbarItemProps {
   title: string;
@@ -14,7 +15,7 @@ export default function NavbarItem({ title, param }: NavbarItemProps) {
   const genre = searchParams.get('genre');
 
   return (
-    <Suspense>
+    <Suspense fallback={<Loading />}>
       <div>
         <Link
           className={`hover:text-amber-600 font-semibold ${genre === param ? 'underline underline-offset-8 decoration-4 decoration-amber-500 rounded-lg' : ''}`}
